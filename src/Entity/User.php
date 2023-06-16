@@ -49,9 +49,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\ManyToMany(targetEntity: Music::class, inversedBy: 'users')]
+    private Collection $musics;
+
     public function __construct()
     {
         $this->playlist = new ArrayCollection();
+        $this->musics = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -210,6 +214,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Music>
+     */
+    public function getMusics(): Collection
+    {
+        return $this->musics;
+    }
+
+    public function addMusic(Music $music): static
+    {
+        if (!$this->musics->contains($music)) {
+            $this->musics->add($music);
+        }
+
+        return $this;
+    }
+
+    public function removeMusic(Music $music): static
+    {
+        $this->musics->removeElement($music);
 
         return $this;
     }

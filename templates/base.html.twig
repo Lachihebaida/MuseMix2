@@ -38,11 +38,11 @@
         <li class="nav-item ms-auto">
         <div class="d-lg-flex">
         {% if app.user is not null %}
-          <a class="nav-link" href="">Mon compte</a>
-          <a class="nav-link" href="">Déconnexion</a>
+          <a class="nav-link" href="{{ path('app_profil')}}">Mon compte</a>
+          <a class="nav-link" href="{{ path('app_logout')}}">Déconnexion</a>
           {% else %}
-          <a class="nav-link" href="">Inscription</a>
-          <a class="nav-link" href="">Connexion</a>
+          <a class="nav-link" href="{{ path('app_register')}}">Inscription</a>
+          <a class="nav-link" href="{{ path('app_login')}}">Connexion</a>
           {% endif %}
     
         </li>
@@ -50,8 +50,7 @@
       </div>
       </div>
       </nav>
-
-  </nav>
+      
         {% for label, messages in app.flashes() %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }}" role="alert">
