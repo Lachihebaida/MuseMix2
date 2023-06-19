@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
         ]);
     }
     #[Route('/category/{slug}', name: 'app_category_show')]
-    public function showBook($slug, CategoryRepository $categoryRepository): Response
+    public function showMusic($slug, CategoryRepository $categoryRepository): Response
     {
         //on récupère le category correspondant au slug
         $category = $categoryRepository->findOneBy(['slug' => $slug]);
