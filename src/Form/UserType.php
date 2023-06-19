@@ -14,15 +14,15 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('plainPassword', PasswordType::class, [
+            ->add('password', PasswordType::class, [
                 'mapped'=>false,
             ])
-            // ->add('roles')
-            // ->add('password')
-            // ->add('firstName')
-            // ->add('lastName')
-            // ->add('pseudo')
-            // ->add('imageName')
+            //  ->add('roles')
+            //  ->add('password')
+             ->add('firstName')
+             ->add('lastName')
+             ->add('pseudo')
+             ->add('imageName')
             // ->add('isVerified')
         ;
     }

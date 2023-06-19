@@ -6,6 +6,11 @@ use App\Entity\Music;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class MusicType extends AbstractType
 {
@@ -15,11 +20,30 @@ class MusicType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('author')
-            ->add('imageName')
-            ->add('audioFile')
+            //  ->add('imageName', FileType::class, [
+            //     'required'=>false,
+            //     'label'=>"Votre fichier image",
+            // ])
+
+            // ->add('imageFile', FileType::class, [
+            //     'required'=>false,
+            //     'label'=>"Image de la musique",
+            // ])
+            
+            ->add('audioFile', FileType::class, [
+                'required'=>false,
+                'label'=>"Votre fichier audio",
+            ])
+            // ->remove('updatedAt', DateTimeType::class, [
+            //     'widget'=>'single_text',
+            //     'data'=> new \DateTimeImmutable(),
+            // ])
             ->add('slug')
-            ->add('category')
-            ->add('playlists')
+            ->add('category', EntityType::class, [
+                'class'=> 'App\Entity\Category',
+                'expanded'=>true, //Cases à cocher
+            ])
+            // ->add('playlists')
         ;
     }
 

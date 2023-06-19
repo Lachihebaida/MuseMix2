@@ -23,24 +23,27 @@
                 <th>Author</th>
                 <td>{{ music.author }}</td>
             </tr>
-            <tr>
+            {# <tr>
                 <th>ImageName</th>
                 <td>{{ music.imageName }}</td>
-            </tr>
+            </tr> #}
             <tr>
-                <th>AudioFile</th>
-                <td>{{ music.audioFile }}</td>
+                <th>Nom d'audio</th>
+                <td>{{ music.audioName }}</td>
             </tr>
             <tr>
                 <th>Slug</th>
                 <td>{{ music.slug }}</td>
             </tr>
+            <th>Category</th>
+                <td>{{ music.category }}</td>
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_music_index') }}">back to list</a>
+    <a href="{{ path('app_admin_music_index') }}" class="btn btn-dark">Retour</a>
 
-    <a href="{{ path('app_admin_music_edit', {'id': music.id}) }}">edit</a>
+    <a href="{{ path('app_admin_music_edit', {'id': music.id}) }}" class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
 
     {{ include('admin_music/_delete_form.html.twig') }}
 {% endblock %}
