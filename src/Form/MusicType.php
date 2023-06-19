@@ -41,7 +41,12 @@ class MusicType extends AbstractType
             ->add('slug')
             ->add('category', EntityType::class, [
                 'class'=> 'App\Entity\Category',
-                'expanded'=>true, //Cases à cocher
+                'multiple'=>false,
+                'attr'=> [
+                    'class'=> "select2",
+                ],
+                // 'expanded'=>false, //Cases à cocher
+                // 'multiple'=>true
             ])
             // ->add('playlists')
         ;

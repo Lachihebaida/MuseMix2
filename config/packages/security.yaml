@@ -34,6 +34,12 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+          
+        # La partie role_hierarchy contient la hiérarchie des rôles
+    role_hierarchy:
+        ROLE_ARTISTE: ROLE_USER
+        ROLE_SPONSOR: ROLE_USER
+        ROLE_ADMIN: [ROLE_ARTISTE, ROLE_SPONSOR]
 
 when@test:
     security:

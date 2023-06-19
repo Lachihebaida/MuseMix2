@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ music.title }}{% endblock %}
+
+{% block body %}
+<h1>{{ music.title }}</h1>
+<div class="row">
+	<div class="col-12 col-md-3">
+		{% if music.imageName is defined and music.imageName is not null %}
+  	<img src="{{ asset('images/musics/' ~ music.imageName) }}" alt="" class="img-fluid">
+		{% else %}
+		<img src="{{ asset('/images/musics/image-default.png') }}" alt="" class="img-fluid">
+		{% endif %}
+</div>
+<div class="col-12 col-md-9">
+{# <h2>Description :</h2>
+<p>{{ music.description }}</p> #}
+<h2>Auteur(s)</h2>
+<ul>
+{% for author in music.author %}
+<li>{{ author }}</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+
+
+{% endblock %}

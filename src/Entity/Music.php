@@ -34,6 +34,7 @@ class Music
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
+    
     // #[Vich\UploadableField(mapping: 'musics', fileNameProperty: 'imageName')]
     // private ?File $imageName = null;
 
@@ -70,6 +71,17 @@ class Music
         $this->playlists = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
+
+// ====================================================== //
+// ==================== MAGIC FUNCTION =================== //
+// ====================================================== //
+public function __toString(): string
+{
+    return $this->title;
+}
+ // ====================================================== //
+// =================== GETTERS/SETTERS ================== //
+// ====================================================== //
 
     public function getId(): ?int
     {
