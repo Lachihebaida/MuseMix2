@@ -10,42 +10,30 @@
 {% block title %}Nos Musiques{% endblock %}
 {% block body %}
 
-  <h1 class="text-left mx-auto my-5 pt-4">
-        Nos Musiques
-    </h1>
+    <h1 class="mb-3"><i data-feather="search"></i> Nos Musiques<i data-feather="search"></i></h1>
+
+    <div class="row">
+    {% for music in musics %}
 
     <div class="d-flex justify-content-around"></div>
 
-    <div class="row mt-5">
-    <div class="col-3 mb-3">
-    <div class="card h-100 position-relative">
-    <div class="position-relative">
+    <div class=" col-12 col-md-3 col-lg-3 mb-3">
 
-    {# On affiche toutes les musics avec une boucle #}
+<a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-dark btn-outline-secondary shadow">
+                <img src="{{ asset('/images/musics' ~ music.ImageName) }}" class="card-img-top" alt="{{music.title}}">
+                <h2>{{music.title}}</h2>
+            </a>
 
-    {% if music.imageName is defined and music.ImageName is not null %}
-        <img src="{{ asset('/images/musics' ~ music.ImageName) }}" class="card-img-top" alt="{{ music.title }}">
-        {% else %}
-         <img src="{{ asset('/images/musics/image-default.png') }}" class="card-img-top" alt="image par défaut">
-        {% endif %}
-
-    {% if music.audioName is defined  and music.audioName is not null%}
-        <audio controls src="{{asset ('/music/' ~ audio.audioName)}}" class="card-img-top" alt="..."></audio>
-        {% else %}
-        <audio controls src="{{ asset('/music/calling-out15sec.mp3') }}" class="card-img-top" alt="image par défaut">
-        {% endif %}
-
-        
-
-        {# <i data-feather="heart"></i> #}
-
-
-        </div>
-    
-        <div class="d-flex gap-5 position-absolute bottom-0 m-4 p-3">
-                
-        </div>
-    </div>
-    </div>
 </div>
+
+{% endfor %}
+    </div>
 {% endblock %}
+
+
+
+
+
+
+
+    
