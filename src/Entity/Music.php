@@ -35,8 +35,8 @@ class Music
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
     
-    // #[Vich\UploadableField(mapping: 'musics', fileNameProperty: 'imageName')]
-    // private ?File $imageName = null;
+    #[Vich\UploadableField(mapping: 'musics', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
     // #[ORM\Column(length: 255)]
@@ -124,17 +124,17 @@ public function __toString(): string
         return $this;
     }
 
-    // public function getImageName(): ?string
-    // {
-    //     return $this->imageName;
-    // }
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
 
-    // public function setImageName(?string $imageName): static
-    // {
-    //     $this->imageName = $imageName;
+    public function setImageName(?string $imageName): static
+    {
+        $this->imageName = $imageName;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
 
 /**
@@ -144,23 +144,23 @@ public function __toString(): string
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $ImageName
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $ImageFile
      */
-    // public function setImageName(?File $imageName = null): void
-    // {
-    //     $this->imageName = $imageName;
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
 
-    //     if (null !== $imageName) {
-    //         // It is required that at least one field changes if you are using doctrine
-    //         // otherwise the event listeners won't be called and the file is lost
-    //          $this->updatedAt = new \DateTimeImmutable();
-    //     }
-    // }
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
 
-    // public function getImageName(): ?File
-    // {
-    // return $this->imageName;
-    // }
+    public function getImageFile(): ?File
+    {
+    return $this->imageFile;
+    }
 
 
 

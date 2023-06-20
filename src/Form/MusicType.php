@@ -20,15 +20,12 @@ class MusicType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('author')
-            //  ->add('imageName', FileType::class, [
-            //     'required'=>false,
-            //     'label'=>"Votre fichier image",
-            // ])
+            // ->add('imageName')
 
-            // ->add('imageFile', FileType::class, [
-            //     'required'=>false,
-            //     'label'=>"Image de la musique",
-            // ])
+            ->add('imageFile', FileType::class, [
+                'required'=>false,
+                'label'=>"Image de la musique",
+            ])
             
             ->add('audioFile', FileType::class, [
                 'required'=>false,

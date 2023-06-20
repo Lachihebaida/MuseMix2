@@ -13,16 +13,16 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $categoryRepository): Response
     {   
          // on récupère tout les category
-        $categories = $categoryRepository->findAll();
+        $categorys = $categoryRepository->findAll();
         // on rend la page en lui passant la liste des category
         return $this->render('category/index.html.twig', [
-            'categories' => $categories,
+            'category' => $categorys,
         ]);
     }
     #[Route('/category/{slug}', name: 'app_category_show')]
-    public function showBook($slug, CategoryRepository $categoryRepository): Response
+    public function showCategory($slug, CategoryRepository $categoryRepository): Response
     {
-        //on récupère le category correspondant au slug
+        //On récupère la catégorie correspondant au slug
         $category = $categoryRepository->findOneBy(['slug' => $slug]);
         //on rend la page en lui passant le category
         return $this->render('category/show.html.twig', [
