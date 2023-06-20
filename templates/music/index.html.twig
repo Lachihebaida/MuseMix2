@@ -9,29 +9,39 @@
     {% extends 'base.html.twig' %}
 {% block title %}Nos Musiques{% endblock %}
 {% block body %}
-
     <h1 class="mb-3"><i data-feather="search"></i> Nos Musiques<i data-feather="search"></i></h1>
-
     <div class="row">
-    {% for music in musics %}
+        {% for music in musics %}
+            <div class=" col-12 col-md-3 col-lg-3 mb-3">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ asset('/images/musics/' ~ music.ImageName) }}" class="img-fluid rounded-start" alt="{{music.title}}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="text-dark">{{music.title}}</a>
+                                {% if app.user is not null %}
+                                    {% if music not in app.user.musics %}
+                                    <a href="{{ path('add_favori', { id: music.id }) }}" class="mt-3 btn btn-danger"><i class="fa-regular fa-heart"></i></a>
+                                     {% elseif music in app.user.musics %}
+                                    <a href="{{ path('remove_music', { id: music.id }) }}" class="btn btn-danger"><i class="fa-solid fa-heart"></i></a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
 
-    <div class=" col-12 col-md-3 col-lg-3 mb-3">
-
-<a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-dark btn-outline-secondary shadow">
+{# <a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-dark btn-outline-secondary shadow">
                 <img src="{{ asset('/images/musics/' ~ music.ImageName) }}" class="card-img-top" alt="{{music.title}}">
                 <h2>{{music.title}}</h2>
-            </a>
+            </a>#}
 
-</div>
 
-{% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}
 
 
-
-
-
-
-
-    

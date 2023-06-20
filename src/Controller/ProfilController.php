@@ -32,7 +32,7 @@ class ProfilController extends AbstractController
 
             }
             //On met en place un message flash
-            $this->addFlash('success', 'Votre profil a bien été modifié');
+            $this->addFlash('dark', 'Votre profil a bien été modifié');
             // On enregistre les modification
             $em->persist($user);
             $em->flush();
@@ -47,7 +47,7 @@ class ProfilController extends AbstractController
     }
 
     #[Route('/add-favori/{id}', name: 'add_favori')]
-    public function addFavori($id, MusicRepository $musicRepository, EntityManagerInterface $em):Response
+    public function addFavori($id, MusicRepository $musicRepository, EntityManagerInterface $em, Request $request):Response
     {
         //On récupère la musique dans la BDD
         $music = $musicRepository->find($id);
@@ -56,16 +56,16 @@ class ProfilController extends AbstractController
         //On ajoute la musique à la liste des favoris de l'utilisateur
         $user->addMusic($music);
         //On met en place un message flash
-        $this->addFlash('success', 'La musique a bien été ajouté  à vos favories');
+        $this->addFlash('dark', 'La musique a bien été ajouté  à vos favoris');
         $em->persist($user);
         $em->flush();
-        //On regdirige vers la page de musique
-        return $this->redirectToRoute('app_music');
+        //On redirige vers la page ou est l'utilisateur
+        return $this->redirect($request->headers->get('referer'));
 
     }
 
     #[Route('/remove-music/{id}', name: 'remove_music')]
-    public function removeMusic($id, MusicRepository $musicRepository, EntityManagerInterface $em):Response
+    public function removeMusic($id, MusicRepository $musicRepository, EntityManagerInterface $em, Request $request):Response
     {
         //On récupère la musique dans la BDD
         $music = $musicRepository->find($id);
@@ -74,11 +74,11 @@ class ProfilController extends AbstractController
         //On ajoute la musique à la liste des favoris de l'utilisateur
         $user->removeMusic($music);
         //On met en place un message flash
-        $this->addFlash('success', 'La musique a bien été retirer à vos favoris');
+        $this->addFlash('dark', 'La musique a bien été retirer à vos favoris');
         $em->persist($user);
         $em->flush();
-        //On regdirige vers la page de musics
-        return $this->redirectToRoute('app_profil');
+        //On redirige vers la page ou est l'utilisateur
+        return $this->redirect($request->headers->get('referer'));
 
     }
 
