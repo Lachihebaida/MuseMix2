@@ -15,12 +15,10 @@
     <div class="row">
     {% for music in musics %}
 
-    <div class="d-flex justify-content-around"></div>
-
     <div class=" col-12 col-md-3 col-lg-3 mb-3">
 
 <a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-dark btn-outline-secondary shadow">
-                <img src="{{ asset('/images/musics' ~ music.ImageName) }}" class="card-img-top" alt="{{music.title}}">
+                <img src="{{ asset('/images/musics/' ~ music.ImageName) }}" class="card-img-top" alt="{{music.title}}">
                 <h2>{{music.title}}</h2>
             </a>
 
