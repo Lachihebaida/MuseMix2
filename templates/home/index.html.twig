@@ -34,22 +34,73 @@
         </div>
     </div>
 
-   
-    <div class="container2">
-        <h2> Zoom sur...</h2>
-        <div class="card mb-3" style="max-width: 540px;">
+    {# start-zoom sur #}
+    <div class="container2 mt-4">
+        <h1 class="text-body-emphasis">Zoom sur...</h1>
+        {# start-carte de l'artiste zoom sur #}
+        <div class="card mb-3 text-bg-dark">
             <div class="row g-0">
+                {# start-image #}
                 <div class="col-md-4">
-                    <img src="img/photos/man.jpg" class="img-fluid rounded-start" alt="man">
+                    <img src="{{ asset('img/photos/man.jpg') }}" class="img-fluid rounded-start" alt="man">
                 </div>
-                <div class="col-md-8">
+                {# end-image #}
+                {# start-body #}
+                <div class="col-md-8 d-flex">
                     <div class="card-body">
                         <h5 class="card-title">Artiste</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                     </div>
+                    {# start-Liste des musiques les plus écoutées de l'artiste #}
+                    <div class="card m-3 col-5 text-bg-dark">
+                        <div class="card-header">
+                            Plus écoutés
+                        </div>
+                        <ol class="list-group list-group-numbered list-group-flush">
+                            {# start-musique1 #}
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-start">
+                            {# <li class="list-group-item d-flex justify-content-between align-items-start"> #}
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Titre</div>
+                                    nombre d'écoutes OU durée
+                                </div>
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            {# </li> #}
+                            </a>
+                            {# end-musique1 #}
+                            {# start-musique2 #}
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-start">
+                            {# <li class="list-group-item d-flex justify-content-between align-items-start"> #}
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Titre</div>
+                                    nombre d'écoutes OU durée
+                                </div>
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            {# </li> #}
+                            </a>
+                            {# end-musique2 #}
+                            {# start-musique3 #}
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-start">
+                            {# <li class="list-group-item d-flex justify-content-between align-items-start"> #}
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">Titre</div>
+                                    nombre d'écoutes OU durée
+                                </div>
+                                <span class="badge bg-primary rounded-pill">14</span>
+                            {# </li> #}
+                            </a>
+                            {# end-musique3 #}
+                        </ol>
+                    </div>
+                    {# end-Liste des musiques les plus écoutées de l'artiste #}
                 </div>
+                {# end-body #}
             </div>
         </div>
-    </div>      
-{% endblock %}
+        {# end-carte de l'artiste zoom sur #}
+
+    </div>
+    {# end-zoom sur #}
+
+{% endblock %} 
+        
