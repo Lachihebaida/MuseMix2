@@ -1,20 +1,50 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello HomeController!{% endblock %}
-
+{% block title %} MuseMix {% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/PHP/MuseMix/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/PHP/MuseMix/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="container1">
+        <h1> Bienvenue </h1>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('img/photos/drums.jpg') }}" class="d-block w-100" alt="drums">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/photos/guitariste.jpg') }}" class="d-block w-100" alt="guitariste">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('img/photos/studio.jpg') }}"  class="d-block w-100" alt="studio">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="titre">
+            <h1> Zoom sur...</h1>
+    </div>
+        <div class="container2">
+            <div class="artist">
+            <img src="images/artists/pexels-wendy-wei-1699161.jpg" alt="Texte alternatif de l'image" width="300" height="200">
+                <div class="description_artist">
+                    <h2>Titre d'arist</h2>
+                    <p>Description d'artist</p>
+            </div>
+            <div class="music_artist">
+            <h2>Le plus écouté</h2>
+             <img src="images/musics/nu-disco.jpg" alt="Texte alternatif de l'image" width="200" height="100">
+            <p>Nombre d'écoute</p>
+            </div>
+        </div>
+        </div>
 {% endblock %}

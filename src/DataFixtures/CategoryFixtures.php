@@ -48,7 +48,7 @@ class CategoryFixtures extends Fixture
 
 
         $category = new Category();
-        $category->setName('country-rock');
+        $category->setName('Country-rock');
         // $category->setImageName("");
         $category->setSlug('country-rock');
         $manager->persist($category);
@@ -56,7 +56,7 @@ class CategoryFixtures extends Fixture
 
 
         $category = new Category();
-        $category->setName('nu-disco');
+        $category->setName('Nu-disco');
         // $category->setImageName("");
         $category->setSlug('nu-disco');
         $manager->persist($category);

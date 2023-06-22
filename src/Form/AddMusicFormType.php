@@ -5,15 +5,13 @@ namespace App\Form;
 use App\Entity\Music;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
-
-class MusicType extends AbstractType
+class AddMusicFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -22,31 +20,26 @@ class MusicType extends AbstractType
             ->add('description')
             ->add('author')
             // ->add('imageName')
-
             ->add('imageFile', VichImageType::class, [
                 'required'=>false,
                 'label'=>"Image de la musique",
             ])
-            
             ->add('audioFile', FileType::class, [
                 'required'=>false,
                 'label'=>"Votre fichier audio",
             ])
-            // ->remove('updatedAt', DateTimeType::class, [
-            //     'widget'=>'single_text',
-            //     'data'=> new \DateTimeImmutable(),
-            // ])
             ->add('slug')
+            // ->add('length')
             ->add('category', EntityType::class, [
                 'class'=> 'App\Entity\Category',
                 'multiple'=>false,
                 'attr'=> [
                     'class'=> "select2",
                 ],
-                // 'expanded'=>false, //Cases à cocher
-                // 'multiple'=>true
-            ])
+                ])
             // ->add('playlists')
+            ->add('Publier', SubmitType::class)
+
         ;
     }
 
