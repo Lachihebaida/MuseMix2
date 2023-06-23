@@ -34,6 +34,8 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+           
+           
           
         # La partie role_hierarchy contient la hiérarchie des rôles
     role_hierarchy:

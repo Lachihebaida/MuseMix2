@@ -58,6 +58,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->musics = new ArrayCollection();
     }
 
+        // ====================================================== //
+    // ==================== MAGIC FUNCTION =================== //
+    // ====================================================== //
+    public function __toString(): string
+    {
+        return $this->lastName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

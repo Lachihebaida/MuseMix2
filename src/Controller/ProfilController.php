@@ -14,9 +14,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder): Response
-    {   //On récupere l'utilisateur
-        
+    public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $encoder, MusicRepository $musicRepository): Response
+    {   
+        //On récupere l'utilisateur
         $user = $this->getUser();
         //On crée un formoulaire avec des données de l'utilisateur
         $form = $this->createForm(UserType::class, $user);
@@ -41,8 +41,12 @@ class ProfilController extends AbstractController
 
 
         }
+        // $mesmusic=$musicRepository->findAll();
+        // var_dump($mesmusic);
+        // die;
         return $this->render('profil/index.html.twig', [
             'form' => $form->createView(),
+            'music' => $musicRepository->findAll()
         ]);
     }
 
@@ -82,6 +86,4 @@ class ProfilController extends AbstractController
 
     }
 
-    
 }
-
