@@ -1,0 +1,43 @@
+
+.contactez-nous h5 {
+  color: #333;
+}
+
+.contactez-nous form {
+  margin-top: 50px;
+}
+
+.contactez-nous button {
+  background-color:#960DFF, #FF9900;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+
+.contactez-nous button[type="submit"] {
+  background-color:#960DFF;
+}
+
+.contactez-nous button:hover {
+  opacity: 0.8;
+}
+.contactez-nous {
+  text-align: center;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 250px;
+  height: 300px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #960DFF 0%, #F90 100%);
+  text-align: center;
+}
+
+.carousel-item{
+  height: 20rem;
+}
+
+    
