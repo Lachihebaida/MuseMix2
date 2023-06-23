@@ -16,53 +16,51 @@
 //     }
 // }
 
+
 namespace App\DataFixtures;
 use App\Entity\Music;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\HttpFoundation\File\File;
-
-
 class MusicFixtures extends Fixture
 {
     public const CYBER_NIGHTS_SHORT ='cyber-nights-short';
     public function load(ObjectManager $manager): void
     {
         $music = new Music();
-        $music->setTitle('Cyber-nights');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setTitle('Cyber');
+        $music->setImageName('cyber.jpg');
         $music->setAudioName('free-test-data-100kb-mp3-648ef13ae2c43513148905.mp3');
         $music->setDescription('Joseph');
         $music->setAuthor("");
         $music->setCategory($this->getReference(CategoryFixtures::POP));
-        $music->setSlug('cyber-nights');
+        $music->setSlug('cyber');
         $manager->persist($music);
 
-
-        $music = new Music(); 
-        $music->setTitle('Cyber-nights');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music = new Music();
+        $music->setTitle('Nights');
+        $music->setImageName('nights.jpg');
         $music->setAudioName('cyber-nights_short15sec.mp3');
         $music->setDescription('Joseph');
         $music->setAuthor("");
         $music->setSlug('cyber-nights');
         $music->setCategory($this->getReference(CategoryFixtures::TECH_HOUSE));
         $manager->persist($music);
-        
-        $music = new Music(); 
+
+        $music = new Music();
         $music->setTitle('Exciting');
-        $music->setImageName('pioneer-5450710_1920.jpg');
-        $music->setAudioName('exciting-anticipation-short15sec.mp3');
+        $music->setImageName('exciting.jpg');
+        $music->setAudioName('exciting-anticipation_short15sec.mp3');
         $music->setDescription('Ricky-Bombino');
         $music->setAuthor("");
         $music->setSlug('exciting');
         $music->setCategory($this->getReference(CategoryFixtures::TECH_HOUSE));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Tomorrow');
         // $music->setImageName('pexels-wendy-wei-2350325.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('tomorrow.jpg');
         $music->setAudioName('Deep tech 15sec.mp3');
         $music->setDescription('Sound-and-vision');
         $music->setAuthor("");
@@ -70,22 +68,21 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::TECH_HOUSE));
         $manager->persist($music);
 
-
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('The sand');
         // $music->setImageName('pexels-wendy-wei-2350325.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('sand.jpg');
         $music->setAudioName('The-sand-is-calling15sec.mp3');
         $music->setDescription('GG-Riggs');
         $music->setAuthor("");
         $music->setSlug('the-sand-is-calling');
         $music->setCategory($this->getReference(CategoryFixtures::POP_DANSE));
         $manager->persist($music);
-        
-        $music = new Music(); 
+
+        $music = new Music();
         $music->setTitle('OkOkOk');
         // $music->setImageName('pexels-wendy-wei-2350325.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('okokok.jpg');
         $music->setAudioName('okokok15sec.mp3');
         $music->setDescription('Wolves');
         $music->setAuthor("");
@@ -93,10 +90,10 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::POP_DANSE));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('In to deep');
         // $music->setImageName('pexels-wendy-wei-2350325.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('pop-danse.jpg');
         $music->setAudioName('sugar-rush15sec.mp3');
         $music->setDescription('Soulish');
         $music->setAuthor("");
@@ -104,23 +101,22 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::POP_DANSE));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Best of');
         // $music->setImageName('carnival-4092632_1920.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('danse.jpg');
         $music->setAudioName('best-of-me15sec.mp3');
         $music->setDescription('JAM-studios');
         $music->setAuthor("");
         $music->setSlug('best-of');
         $music->setCategory($this->getReference(CategoryFixtures::COUNTRY_ROCK));
         $manager->persist($music);
-
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Calling out');
         // $music->setImageName('carnival-4092632_1920.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('nu-disco.jpg');
         $music->setAudioName('calling-out15sec.mp3');
         $music->setDescription('Alex-Purple');
         $music->setAuthor("");
@@ -128,10 +124,10 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures:: NU_DISCO));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Long ago');
         // $music->setImageName('carnival-4092632_1920.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('country-rock.jpg');
         $music->setAudioName('long-ago15sec.mp3');
         $music->setDescription('Kanstantin-Garbuz');
         $music->setAuthor("");
@@ -139,11 +135,10 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::COUNTRY_ROCK));
         $manager->persist($music);
 
-        
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Log cabin');
         // $music->setImageName('pexels-alena-darmel-7715771.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('rock.jpg');
         $music->setAudioName('log-cabin15sec.mp3');
         $music->setDescription('Cruen');
         $music->setAuthor("");
@@ -151,10 +146,10 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::COUNTRY_ROCK));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Better days');
         // $music->setImageName('pexels-alena-darmel-7715771.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('rock2.jpg');
         $music->setAudioName('better-days_short 15sec.mp3');
         $music->setDescription('Colin-Fruser');
         $music->setAuthor("");
@@ -162,32 +157,32 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::COUNTRY_ROCK));
         $manager->persist($music);
 
-        $music = new Music(); 
-        $music->setTitle('Big red truck');
+        $music = new Music();
+        $music->setTitle('Red truck');
         // $music->setImageName('pexels-alena-darmel-7715771.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
-        $music->setAudioName('big-red-truck 15 sec.mp3');
+        $music->setImageName('red-truck.jpg');
+        $music->setAudioName('big-red-truck15sec.mp3');
         $music->setDescription('MVM-Productions');
         $music->setAuthor("");
-        $music->setSlug('big-red-truck');
+        $music->setSlug('red-truck');
         $music->setCategory($this->getReference(CategoryFixtures::COUNTRY_ROCK));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Day trader');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
-        $music->setAudioName('day-trader15sec.mp315sec.mp3');
+        $music->setImageName('day.jpg');
+        $music->setAudioName('day-trader15sec.mp3');
         $music->setDescription('Flash-Fluarity');
         $music->setAuthor("");
         $music->setSlug('day-trader');
         $music->setCategory($this->getReference(CategoryFixtures::BLUES));
         $manager->persist($music);
-       
-        $music = new Music(); 
+
+        $music = new Music();
         $music->setTitle('Beat to go');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('beat.jpg');
         $music->setAudioName('beat-to-go15sec.mp3');
         $music->setDescription('Flash-Fluarity');
         $music->setAuthor("");
@@ -195,21 +190,21 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::BLUES));
         $manager->persist($music);
 
-        $music = new Music(); 
-        $music->setTitle('At first place');
+        $music = new Music();
+        $music->setTitle('My place');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('place.jpg');
         $music->setAudioName('at-first-place15sec.mp3');
         $music->setDescription('Ricky-Bombino');
         $music->setAuthor("");
-        $music->setSlug('at-first-place');
+        $music->setSlug('my-place');
         $music->setCategory($this->getReference(CategoryFixtures::BLUES));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('New wave');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('wave.jpg');
         $music->setAudioName('new-wave15sec.mp3');
         $music->setDescription('Oakvale-of-Albion');
         $music->setAuthor("");
@@ -217,28 +212,27 @@ class MusicFixtures extends Fixture
         $music->setCategory($this->getReference(CategoryFixtures::POP));
         $manager->persist($music);
 
-        $music = new Music(); 
+        $music = new Music();
         $music->setTitle('Neons');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('neons.jpg');
         $music->setAudioName('neons15sec.mp3');
         $music->setDescription('Hartley');
         $music->setAuthor("");
         $music->setSlug('neons');
         $music->setCategory($this->getReference(CategoryFixtures::POP));
         $manager->persist($music);
-
-        $music = new Music(); 
-        $music->setTitle('Wall of fame');
+        
+        $music = new Music();
+        $music->setTitle('Fame');
         // $music->setImageName('pexels-cottonbro-studio-9403121.jpg');
-        $music->setImageName('pioneer-5450710_1920.jpg');
+        $music->setImageName('fame.jpg');
         $music->setAudioName('Wall-of-fame15sec.mp3');
         $music->setDescription('JAM-studios');
         $music->setAuthor("");
-        $music->setSlug('wall-of-fame');
+        $music->setSlug('fame');
         $music->setCategory($this->getReference(CategoryFixtures::POP));
         $manager->persist($music);
-
         $manager->flush();
     }
 }

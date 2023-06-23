@@ -1,140 +1,32 @@
-{# {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+{% endblock %}
 {% block title %}
-    Categories
+    Nos catégories
 {% endblock %}
 {% block body %}
-    <h1 class="text-left mx-auto my-5 pt-4">
-        Categories
-    </h1>
-    <div class="row row-cols-1 row-cols-md-3 g-3">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4 d-flex align-items-center">
-                        <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2 rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                        <div class="col">
-                            <div class="card-body d-flex flex-column justify-content-between">
-                                <div>
-                                    <h5 class="card-title mt-2">
-                                        Card title
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2  rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                            <div class="col-md-8">
-                                <div class="card-body d-flex flex-column justify-content-between">
-                                    <div>
-                                        <h5 class="card-title mt-2">
-                                            Card title
-                                        </h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2  rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                                <div class="col-md-8">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title mt-2">
-                                                Card title
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2  rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                                <div class="col-md-8">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title mt-2">
-                                                Card title
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2  rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                                <div class="col-md-8">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title mt-2">
-                                                Card title
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                    <div class="card">
-                        <div class="row g-0">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img src="{{ asset('/images/categories/nu-disco.jpg') }}" class="card-img-top mx-auto ms-2 mt-2 mb-2  rounded" alt="image par défaut" style="max-width: 150px;"></div>
-                                <div class="col-md-8">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <div>
-                                            <h5 class="card-title mt-2">
-                                                Card title
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- Add more cards following the same structure -->
-                </div>
-            <!-- Add more cards following the same structure -->
-            </div>
-        {% endblock %} #}
-
-{% extends 'base.html.twig' %}
-
-{% block title %}MuseMix - Toutes les catégories{% endblock %}
-
-{% block body %}
-    <h1 class="mb-3"><i data-feather="search"></i> Toutes les catégories <i data-feather="search"></i></h1>
-
+    <h1 class="mb-3">Toutes les catégories</h1>
 
     <div class="row">
-    {% for category in category %}
-
-    <div class=" col-12 col-md-3 col-lg-3 mb-3">
-        
-            <a href="{{ path ('app_category_show', {slug:category.slug }) }}" class="btn btn-dark btn-outline-secondary shadow">
-                <img src="{{ asset('/images/categories/nu-disco.jpg' ~ category.imageName) }}" class="card-img-top" alt="{{category.name}}">
-                <h2>{{category.name}}</h2>
-            </a>
-        
-    </div>
-
-{% endfor %}
+        {% for category in category %}
+        <div class=" col-6 col-sm-6 col-md-3 col-lg-3 mb-3">
+            <div class="card mb-3" >
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a href="{{ path('app_category_show', {slug: category.slug}) }}">
+                            <img src="{{ asset('/images/categories/' ~ category.imageName) }}" class="img-fluid rounded-start" alt="{{ category.name }}" style="height: 100px ">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('app_category_show', {slug: category.slug}) }}" class="text-dark">{{ category.name }}</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -18,6 +18,9 @@
 		{% endif %}
 </div>
 
+{% if is_granted('ROLE_SPONSOR') %}
+            <button onclick="window.location.href = 'mailto:shinvaleriya1808@gmail.com';" class="btn btn-primary btn-violet spotify-style-button">Open Email</button>
+        {% endif %}
 
 
 

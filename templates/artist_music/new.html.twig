@@ -3,9 +3,12 @@
 {% block title %}New Music{% endblock %}
 
 {% block body %}
-    <h1>Create new Music</h1>
-
+{# 
     {{ include('artist_music/_form.html.twig') }}
 
-    <a href="{{ path('app_profil') }}">back to list</a>
+    <a href="{{ path('app_profil') }}">back to list</a> #}
+
+	<a href="{{ path('app_profil') }}" class="btn btn-dark mb-3"><i class="align-middle" data-feather="arrow-left-circle"></i></a>
+    <h1>Create new Music</h1>
+    {{ include('artist_music/_form.html.twig') }}
 {% endblock %}

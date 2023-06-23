@@ -31,7 +31,7 @@ class ArtistMusicController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $musicRepository->save($music, true);
 
-            return $this->redirectToRoute('app_artist_music_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('artist_music/new.html.twig', [
@@ -57,10 +57,10 @@ class ArtistMusicController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $musicRepository->save($music, true);
 
-            return $this->redirectToRoute('app_artist_music_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('artist_music/edit.html.twig', [
+        return $this->render('artist_music/edit.html.twig', [
             'music' => $music,
             'form' => $form,
         ]);
@@ -73,6 +73,6 @@ class ArtistMusicController extends AbstractController
             $musicRepository->remove($music, true);
         }
 
-        return $this->redirectToRoute('app_artist_music_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
     }
 }

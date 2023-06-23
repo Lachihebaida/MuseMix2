@@ -1,59 +1,38 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}{{category.name}}{% endblock %}
-
+{% block title %}
+    {{ category.name }}
+{% endblock %}
 {% block body %}
-<h1>Catégorie : {{ category.name }}</h1>
-
-{% if category.music is not empty %}
-    <div class="row d-flex justify-content-center">
-
-    {% for music in category.music %}
-        <div class="col-12 col-md-4 col-xl-3 mb-3"> 
-            <div class="card shadow">
-
-                <div class="position-relative">
-                    {% if  music.imageName is defined and music.imageName is not null  %}
-                    <img src="{{ asset('/images/musics/' ~ music.imageName) }}" class="card-img-top" alt="{{music.title}}">
+    <h1>{{ category.name }}</h1>
+    <div class="row">
+{% for music in category.musics %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    {% if music.imageName is defined and music.imageName is not null %}
+                        <img src="{{ asset('images/musics/' ~ music.imageName) }}" class="card-img-top" alt="{{ music.title }}">
                     {% else %}
-                    <img src="{{ asset('/images/musics/image-default.png') }}" class="img-fluid" alt="{{music.title}}">
+                        <img src="{{ asset('images/music/default-image.jpg') }}" class="card-img-top" alt="Default Image" style="height: 100px ">
                     {% endif %}
-                    <a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-outline-secondary rounded-circle position-absolute top-50 start-50 translate-middle p-2">
-                        <i data-feather="play"></i>
-                    </a>
-
-                    {% if music not in app.user.musics %}
-                    <a href="{{ path ('add_favori', {id:music.id }) }}" class="btn btn-dark rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
-                    <i data-feather="heart" class="text-danger"></i>
-                    </a>
-                    {% else %}
-                    <a href="{{ path ('remove_music', {id:music.id }) }}" class="btn btn-danger rounded-circle position-absolute bottom-0 end-0 p-1 m-2">
-                    <i data-feather="heart" class="text-light"></i>
-                    </a>
-                    {% endif %}
-
-                </div>                
-
-                <div class="card-body text-center">
-                    <a href="{{ path ('app_music_show', {slug:music.slug }) }}" class="btn btn-outline-secondary">{{music.title}}</a>
-                    <p class="card-text">{{music.description}}</p>
-                    {# <p class="card-text">{{music.duration}}</p> #}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ music.title }}</h5>
+                        <p class="card-text">{{ music.description }}</p>
+                        {% if music.audioName is defined and music.audioName is not null %}
+                            <audio controls src="{{ asset('music/' ~ music.audioName) }}" class="card-audio" alt="Audio Player"></audio>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 
-{% else %}
 
-    <p class="text-center">
+    {# <p class="text-center">
     Aucune musique trouvée pour cette catégorie.
     <br>
     <a href="{{ path ('app_category') }}" class="btn btn-outline-secondary mt-3">Explorer d'autres catégories</a>
-    </p>
+    </p> #}
 
-{% endif %} 
+
 
 
 {% endblock %}
