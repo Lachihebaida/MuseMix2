@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\ExpressionLanguage\Expression;
 
 #[Route('/artist/music')]
 class ArtistMusicController extends AbstractController
@@ -21,9 +23,13 @@ class ArtistMusicController extends AbstractController
     //     ]);
     // }
 
+
+    // #[IsGranted(new Expression('is_granted("ROLE_ADMIN") or is_granted("ROLE_ARTISTE")'))]
     #[Route('/new', name: 'app_artist_music_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MusicRepository $musicRepository): Response
+        
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', 'ROLE_ARTISTE');
         $music = new Music();
         $form = $this->createForm(Music1Type::class, $music);
         $form->handleRequest($request);
