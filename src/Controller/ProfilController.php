@@ -86,4 +86,12 @@ class ProfilController extends AbstractController
 
     }
 
+    #[Route('/sponsor/request', name: 'app_sponsor_request')]
+    public function sponsoriser(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', 'ROLE_SPONSOR');
+        return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+        
+    }
+
 }

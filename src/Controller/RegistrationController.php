@@ -33,6 +33,18 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $role = $form->get("role")->getData();
+            
+            switch($role){
+                case "artiste":
+                    $user->setRoles(["ROLE_USER", "ROLE_ARTISTE"]);
+                    break;
+                case "sponsor":
+                    $user->setRoles(["ROLE_USER", "ROLE_SPONSOR"]);
+                    break;
+                default:
+                    $user->setRoles(["ROLE_USER"]);
+            }
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -41,7 +53,6 @@ class RegistrationController extends AbstractController
                 )
             );
             // on ajoute un role à l'utilisateur
-            $user->setRoles(['ROLE_USER']);
             $entityManager->persist($user);
             $entityManager->flush();
 

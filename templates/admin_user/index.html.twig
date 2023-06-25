@@ -26,7 +26,7 @@
                 <td>{{ user.email }}</td>
                 <td>
                 {# On boucle sur les rôles #}
-                    {% for role in user.roles %}
+                    {# {% for role in user.roles %}
                         {% if role == "ROLE_USER" %}
                             Utilisateur
                         {% elseif role == "ROLE_ARTISTE" %}
@@ -36,7 +36,17 @@
                         {% elseif role == "ROLE_ADMIN" %}
                             Administrateur
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %} #}
+
+                    {% if "ROLE_ADMIN" in user.roles %}
+                    Administrateur
+                    {% elseif "ROLE_ARTISTE" in user.roles %}
+                    Artiste
+                    {% elseif "ROLE_SPONSOR" in user.roles %}
+                    Sponsor
+                    {% else %}
+                    Utilisateur
+                    {% endif %}
                 </td>
                 <td>{{ user.password }}</td>
                 <td>{{ user.firstName }}</td>

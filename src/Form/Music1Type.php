@@ -34,6 +34,7 @@ class Music1Type extends AbstractType
             ->add('imageFile', VichImageType::class, [
                 'required'=>false,
                 'label'=>"Image de la musique",
+                // 'attr'=>["class"=>"img-fluid"]
             ])
             ->add('audioFile', FileType::class, [
                 'required'=>false,

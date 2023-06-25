@@ -29,12 +29,14 @@ class ArtistMusicController extends AbstractController
     public function new(Request $request, MusicRepository $musicRepository): Response
         
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN', 'ROLE_ARTISTE');
+        $this->denyAccessUnlessGranted('ROLE_ARTISTE');
         $music = new Music();
         $form = $this->createForm(Music1Type::class, $music);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $music->setSlug(strtolower($slugger->slug($music->getTitle())));
+            // $music->setTitle(ucfirst($music->getTitle()));
             $musicRepository->save($music, true);
 
             return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);

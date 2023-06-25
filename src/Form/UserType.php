@@ -29,12 +29,12 @@ class UserType extends AbstractType
             ->add('password', PasswordType::class, [
                 'mapped'=>false,
             ])
-            ->add('roles', ChoiceType::class, [
+            ->remove('roles', ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
                     'Artiste' => 'ROLE_ARTISTE',
                     'Sponsor' => 'ROLE_SPONSOR',
-                    'Administrateur' => 'ROLE_ADMIN'
+                    // 'Administrateur' => 'ROLE_ADMIN'
                 ],
                 'expanded' => true,
                 'multiple' => true,

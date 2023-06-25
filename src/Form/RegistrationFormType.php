@@ -27,16 +27,17 @@ class RegistrationFormType extends AbstractType
             ],
             'required' => true,
         ])
-        ->add('roles', ChoiceType::class, [
+        ->add('role', ChoiceType::class, [
             'choices' => [
-                'Utilisateur' => 'ROLE_USER',
-                'Artiste' => 'ROLE_ARTISTE',
-                'Sponsor' => 'ROLE_SPONSOR'
+                'Utilisateur' => 'user',
+                'Artiste' => 'artiste',
+                'Sponsor' => 'sponsor'
             ],
-            'expanded' => true,
-            'multiple' => true,
+            // 'expanded' => true,
+            // 'multiple' => true,
             'label' => 'Rôles',
-            'required' => true
+            'required' => true,
+            'mapped'=>false,
         ])
             ->add('firstName')
             ->add('lastName')
