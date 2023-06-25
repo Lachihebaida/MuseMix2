@@ -17,8 +17,9 @@
 
 }
 
-.contactez-nous button[type="submit"] {
+.contactez-nous a {
   background-color:#960DFF;
+  color:#fff;
 }
 
 .contactez-nous button:hover {
@@ -39,5 +40,12 @@
 .carousel-item{
   height: 20rem;
 }
-
+@media screen and (min-width: 768px) {
+  .nav{
+    width: 100%;
+    display:none;
+    position:fixed;
+  }
+}
+ 
     

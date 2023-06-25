@@ -19,12 +19,13 @@
     <div class="row">
             {# <header> #}
             {# <div class="col-2"> #}
-            <div class="col-md-3 position-static">
+            <div class=" nav col-md-3 position-static">
                 <nav class="d-flex flex-column align-items-stretch flex-shrink-0 p-3 text-white bg-dark sticky-top vh-100">
                     <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img width="40" height="40" src="{{ asset('img/icons/logo-musemix.png') }}" alt="logo MuseMix"/>
                         <span class="fs-4">MuseMix</span>
                     </a>
+    
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
@@ -33,32 +34,33 @@
                                 Rechercher
                             </a>
                         </li>
-                        <div class="contactez-nous"
+                         {% if app.user is null %}
+                        <!-- Navbar pour l'utilisateur  n est pas connecté -->
+                        <div class="contactez-nous">
                             <h5>Pas encore de compte?</h5>
                         <form action="/inscription" method="post">
-                            <button type="submit" name="inscription">Inscrivez-vous</button>
+                            <a class="btn" href="{{ path('app_register')}}">Inscrivez-vous</a>
                         </form>
                         <form action="/connexion" method="post">
-                            <button type="submit" name="connexion">Connexion</button>
+                            <a class="btn" href="{{ path('app_login')}}">Connexion</a>
                         </form>
                         </div>
-                     
-
-                        
-                        {# <li>
-                            <a href="{{ path('app_music') }}" class="nav-link text-white">
+                         {% else %}
+                        <!-- Navbar pour l'utilisateur connecté -->               
+                            <li>
+                             <a href="{{ path('app_music') }}" class="nav-link text-white">
                                 <i class="align-middle" data-feather="music"></i>
                                 Musiques
-                            </a>
-                        </li>
-                        <li>
+                             </a>
+                            </li>
+                            <li>
                             <a href="{{ path('app_category') }}" class="nav-link text-white">
                                 <i class="align-middle" data-feather="list"></i>
                                 Catégories
                             </a>
-                        </li>
-                    </ul> #}
-                    {# <hr>
+                            </li>
+                    </ul> 
+                        <hr>
                         <div class="d-flex justify-content-between">
                             {% if app.user is not null %}
                                 <a class="nav-link" href="{{ path('app_profil')}}">Mon compte</a>
@@ -67,7 +69,8 @@
                                 <a class="nav-link" href="{{ path('app_register')}}">Inscription</a>
                                 <a class="nav-link" href="{{ path('app_login')}}">Connexion</a>
                             {% endif %}
-                        </div> #}
+                        </div>
+                 {% endif %}       
                 </nav>
             </div>
             {# </header> #}
@@ -81,12 +84,12 @@
                     </div>
                 {% endfor %}
             {% endfor %}
-            <div class="container"> {% block body %}{% endblock %}
-            </div>
+            {% block body %}{% endblock %}
+            
         </div>
-    </div>
-    
- 
+  
+  
+
  <!-- Footer -->
 <footer class="bg-light text-center ">
   <!-- Grid container -->
@@ -137,7 +140,7 @@
     <a class="text-dark" href="https://MuseMix.com/">musemix.com</a>
   </div>
   <!-- Copyright -->
-
+    </div>
 </footer>
 <!-- Footer -->
 
@@ -150,5 +153,5 @@
             });
         </script>
         {% block javascripts %}{% endblock %}
-    </body>
+    </body> 
 </html>
