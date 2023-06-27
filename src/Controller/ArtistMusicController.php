@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\ExpressionLanguage\Expression;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 #[Route('/artist/music')]
 class ArtistMusicController extends AbstractController
@@ -82,5 +84,15 @@ class ArtistMusicController extends AbstractController
         }
 
         return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function artistMusic($artistId)
+    {
+        $musicRepository = $this->getDoctrine()->getRepository(Music::class);
+        $artistMusics = $musicRepository->findBy(['artist' => $artistId]);
+
+        return $this->render('artist/music.html.twig', [
+            'musics' => $artistMusics,
+        ]);
     }
 }

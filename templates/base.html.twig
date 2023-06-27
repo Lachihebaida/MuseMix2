@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,11 +10,11 @@
             {% endblock %}
         </title>
         <link rel="icon" href="{{ asset('img/icons/logo-musemix.png') }}">
+        <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -33,6 +35,8 @@
                                 Rechercher
                             </a>
                         </li>
+                <!-- Navbar pour l'utilisateur connecté -->
+                {% if app.user is not null %}
                         <li>
                             <a href="{{ path('app_music') }}" class="nav-link text-white">
                                 <i class="align-middle" data-feather="music"></i>
@@ -56,6 +60,18 @@
                                 <a class="nav-link" href="{{ path('app_login')}}">Connexion</a>
                             {% endif %}
                         </div>
+                {% else %}
+                <!-- Navbar pour l'utilisateur n'est pas connecté -->
+                    <div class="contactez-nous">
+                        <h5>Pas encore de compte?</h5>
+                        <form action="/inscription" method="post">
+                            <a class="btn" href="{{ path('app_register')}}">Inscrivez-vous</a>
+                        </form>
+                        <form action="/connexion" method="post">
+                            <a class="btn" href="{{ path('app_login')}}">Connexion</a>
+                        </form>
+                    </div>
+                {% endif %}
                 </nav>
             </div>
             {# </header> #}
@@ -70,8 +86,57 @@
             {% endfor %}
             <div class="container"> {% block body %}{% endblock %}
             </div>
+               <footer class="bg-dark text-center text-white">
+        <div class="container p-4">
+          
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <a class="btn btn-primary btn-floating m-1" href="#!" role="button"><i data-feather="facebook"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" href="#!" role="button"><i data-feather="twitter"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" href="#!" role="button"><i data-feather="youtube"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" href="#!" role="button"><i data-feather="instagram"></i></a>
+                </section>
+                <!-- Section: Social media -->
+                <!-- Section: Text -->
+                <section class="mb-4">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+                        distinctio earum repellat quaerat voluptatibus placeat nam,
+                        commodi optio pariatur est quia magnam eum harum corrupti dicta,
+                        aliquam sequi voluptate quas.
+                    </p>
+                </section>
+                <!-- Section: Text -->
+                <!-- Section: Links -->
+                <section class="">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-3 mb-md-0">
+                            <h5 class="text-white" href="#!" role="button">Mentions Légales</h5>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3 mb-md-0">
+                            <h5 class="text-white" href="#!" role="button">COOKIES</h5>
+                        </div>
+
+                        <div class="col-lg-3 col md-6 mb-3 mb-md-0">
+                            <h5 class="text-white" href="#!" role="button">A PROPOS</h5>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2023 MuseMix.com
+            </div>
+        </div>
+    </footer>
         </div>
     </div>
+     <!-- Footer -->
+ 
+    <!-- Footer -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -83,3 +148,5 @@
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+
+
