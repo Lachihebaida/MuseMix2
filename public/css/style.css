@@ -56,8 +56,7 @@ card mb-3{
   @media screen and (max-width: 767px) {
 	.nav {
 	  display: none! important; 
-	  width: 100%;
-	  position: fixed;
+	 
 	}
 	.nav-footer {
 		display: flex !important;

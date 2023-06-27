@@ -18,10 +18,24 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+      <!-- start-nav mobile -->
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-footer">
+        <a class="navbar-brand" href="{{ path('app_home')}}">
+            <i data-feather="home"></i> Accueil
+        </a>
+        <a class="nav-link" href="#">
+            <i data-feather="search"></i> Rechercher
+        </a>
+    </div>
+    <!-- end-nav mobile -->
     <div class="row bg-secondary">
             {# <header> #}
             {# <div class="col-2"> #}
-            <div class="col-md-3 position-static">
+            <div class="nav col-md-3 position-static">
                 <nav class="d-flex flex-column align-items-stretch flex-shrink-0 p-3 text-white bg-dark sticky-top vh-100">
                     <a href="{{ path('app_home') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <img width="40" height="40" src="{{ asset('img/icons/logo-musemix.png') }}" alt="logo MuseMix"/>
@@ -30,10 +44,10 @@
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white">
-                                <i class="align-middle" data-feather="search"></i>
-                                Rechercher
-                            </a>
+                        <form action="{{ path('app_music') }}" method="POST" class="search-form">
+                            <input type="text" name="search-query" placeholder="Que souhaitez-vous écouter">
+                            <button type="submit"><i data-feather="search"></i></button>
+                        </form>                           
                         </li>
                 <!-- Navbar pour l'utilisateur connecté -->
                 {% if app.user is not null %}
